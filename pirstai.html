@@ -1,0 +1,114 @@
+<html>
+
+    <head>
+    
+        <title>Fingers' game</title>
+        
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        
+        <style type="text/css">
+            
+        
+            body {
+                
+                margin: 0;
+                padding: 0;
+                background-color: #F1F1F1;
+                font-family: 'Lora', serif;
+                
+            }
+            
+            #container {
+                
+                width: 500px;
+                margin: 100 auto;
+                padding: 20px;
+                text-align: center;
+                background-color: white;
+                border-radius: 10px;
+                
+            }
+            
+            #madeby {
+                
+                position : absolute;
+                bottom: 0;
+                width:100%;
+                text-align: center;
+                
+            }
+           
+        </style>
+    
+    </head>
+    
+    <body>
+        
+        <div id="container">
+            
+            <p>Hello there, can you guess how many fingers I am holding up?</p>
+            
+            <p>Type in number (integer) between 0 and 5 below and try your luck!</p>
+
+            <p><input type="text" id="guess" placeholder="e.g. 2"></p> 
+            
+            <p><button id="checkguess">Guess!</button></p>
+            
+        </div>
+        
+        <div id="madeby"><h6>Made by Dovydas Rama&scaron;auskas</h6></div>
+        
+        <script type="text/javascript">
+            
+            var randomnumber = Math.random();
+                
+                randomnumber = randomnumber * 6;
+                
+                randomnumber = Math.floor(randomnumber);
+            
+            var countclicks = 0;
+            
+            document.getElementById("checkguess").onclick = function() {
+                
+                countclicks++;
+                
+                var guess = document.getElementById("guess").value
+                
+                if ((guess%1) !=0) {
+                    
+                    alert("You must enter number (Integer) between 0 and 5! (For example: 2)")
+                    
+                } else {
+                    
+                    if (guess > 5 || guess < 0) {
+                    
+                    alert("You must enter number (Integer) between 0 and 5! (For example: 2)")
+                    
+                    } else {
+                
+                    if (guess == randomnumber) {
+
+                        alert("Got it! It took you " + countclicks + " guesses");
+                        location.reload();
+
+                        } else if (randomnumber > guess) {
+
+                            alert("Nope! Number is more than " + guess);
+
+                        } else {
+
+                            alert("Nope! Number is less than " + guess);
+
+                        }
+                    
+                    }
+                
+                }
+                
+            } 
+           
+        </script>
+    
+    </body>
+
+</html>

@@ -1,0 +1,652 @@
+<html>
+
+    <head>
+    
+        <title>Reaction game</title>
+        
+        <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8"/>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        
+        <style type="text/css">
+            
+            #shape {
+                
+                width: 200px;
+                height: 200px;
+                background-color: red;
+                display: none;
+                position: relative;
+                
+            }
+            
+            body {
+                
+                margin: 0;
+                padding: 0;
+                background-color: #dddddd;
+                font-family: 'Lora', serif;
+                
+            }
+            
+            #container {
+                
+                width: 800px;
+                margin: 40px auto;
+                padding: 20px;
+                text-align: center;
+                background-color: white;
+                border-radius: 15px;
+                display: none;
+                
+            }
+            
+            #containertwo {
+                
+                width: 800px;
+                height: 700px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 15px;
+                display: none;
+                
+            }
+            
+            #madeby {
+                
+                margin: 10px auto;
+                text-align: center;
+                display: none;
+                
+            }
+            
+            #start {
+                
+                width: 70px;
+                height: 30px;
+                background-color: #4285F4;
+                border-radius: 15px;
+                color: white;
+                border: none;
+                
+            }
+            
+            #stop {
+                
+                width: 70px;
+                height: 30px;
+                background-color: #4285F4;
+                border-radius: 15px;
+                color: white;
+                border: none;
+                
+            }
+            
+            #reset {
+                
+                width: 70px;
+                height: 30px;
+                background-color: #4285F4;
+                border-radius: 15px;
+                color: white;
+                border: none;
+             
+            }
+            
+            #buttons {
+                
+                float: left;
+                width: 200px;
+                margin: 0 auto;
+                margin-left: 20px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 13px;
+                display: none;
+                
+            }
+            
+            #times {
+             
+                float: right;
+                width: 200px;
+                margin: 0 auto;
+                margin-right: 20px;
+                padding: 20px;
+                background-color: white;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 13px;
+                display: none;
+                
+            }
+            
+            .bold {
+                
+                width: 70px;
+                height: 17px;
+                background-color: #4285F4;
+                margin-left: 65px;
+                border-radius: 15px;
+                color: white;
+                border: none;
+                font-weight: bold;
+                font-size: 15px;
+                text-align: center;
+                padding: 5px;
+                
+                
+            }
+            
+            #link {
+                
+                text-decoration: none;
+                
+            }
+            
+            #link:hover {
+                
+                text-decoration: underline;
+                
+            }
+            
+            #gamestart {
+                
+                width: 240px;
+                height: 25px;
+                background-color: #4285F4;
+                margin: 0 auto;
+                margin-top: 320px;
+                border-radius: 15px;
+                text-align: center;
+                color: white;
+                font-size: 20px;
+                display: none;
+                
+            }
+            
+            #gamestatus {
+
+                float: left;
+                clear: both;
+                
+            }
+            
+            #gameisrunnning {
+                
+                width: 200px;
+                margin: 0 auto;
+                margin-left: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 13px;
+                background-color: #4285F4;
+                margin-top: 20px;
+                color: white;
+                font-size: 20px;
+                display: none;
+                
+            }
+            
+            #gameispaused {
+       
+                width: 200px;
+                margin: 0 auto;
+                margin-left: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 13px;
+                background-color: #4285F4;
+                margin-top: 20px;
+                color: white;
+                font-size: 20px;
+                display: none;
+  
+            }
+            
+            #gameisreseted {
+                
+                width: 200px;
+                margin: 0 auto;
+                margin-left: 20px;
+                padding: 20px;
+                border-radius: 15px;
+                text-align: center;
+                font-size: 13px;
+                background-color: #4285F4;
+                margin-top: 20px;
+                color: white;
+                font-size: 20px;
+                display: none;
+                
+            }
+            
+            #timeonsite {
+                
+                float: right;
+                width: 200px;
+                margin: 0 auto;
+                padding: 20px;
+                margin-right: 20px;
+                text-align: center;
+                background-color: white;
+                border-radius: 15px;
+                font-size: 13px;
+                display: none;
+                
+            }
+            
+            #timeofbe {
+                
+                width: 120px;
+                height: 15px;
+                background-color: #4285F4;
+                margin-left: 35px;
+                border-radius: 15px;
+                color: white;
+                border: none;
+                font-weight: bold;
+                text-align: center;
+                padding: 5px;
+                
+            }
+        
+        </style>
+        
+    </head>
+    
+    <body>
+        
+        <div id="timeonsite">
+        
+            <p>You've been here for:</p>
+            
+            <p id="timeofbe"></p>
+        
+        </div>
+        
+        <div id="container">
+        
+            <h3>Welcome to the <b>Reaction game</b>!</h3>
+            
+            <p>Here you can test your reaction.</p>
+            
+            <p>All you need to do is click on the start button and enjoy the game!</p>
+            
+        </div>
+        
+        <div id="buttons">
+            
+            <p>To start the game press "Start"</p>
+            
+            <p><button id="start">Start</button></p>
+            
+            <p>To pause the game press "Pause"</p>
+            
+            <p><button id="stop">Pause</button></p>
+            
+            <p>To reset the game press "Reset"</p>
+            
+            <p><button id="reset">Reset</button></p>
+            
+        </div>
+        
+        <div id="times">
+        
+            <p>Your reaction time:</p>
+            
+            <p class="bold"><span id="timeTaken">&ensp;</span></p>
+            
+            <p>Your average reaction time:</p>
+            
+            <p class="bold"><span id="average">&ensp;</span></p>
+            
+            <p>Your best reaction time:</p>
+            
+            <p class="bold"><span id="best">&ensp;</span></p>
+                
+        </div>
+        
+        <div id="gamestatus">
+            
+            <p id="gameisrunnning">Game is running!</p>
+                
+            <p id="gameispaused">Game is paused!</p>
+                
+            <p id="gameisreseted">Game has been reseted!</p>
+            
+        </div>
+    
+        <div id="containertwo">
+        
+            <div id="shape"></div>
+            
+            <div id="gamestart">Game will start in: <span id="gamestarter"></span>
+            
+            </div>
+        
+        </div>
+        
+        <div id="madeby"><h6>Made by Dovydas Rama&scaron;auskas</h6></div>
+        
+        <script type="text/javascript">
+            
+            document.getElementById("stop").disabled = true; 
+                
+            document.getElementById("reset").disabled = true;
+            
+            $("#stop").css("background-color", "#dddddd");
+                
+            $("#reset").css("background-color", "#dddddd");
+                    
+            setTimeout(function(){ 
+                    
+                    $("#container").fadeIn(400); 
+                
+                }, 1000);
+            
+            setTimeout(function(){ 
+                    
+                    $("#containertwo").fadeIn(400); 
+                
+                }, 1500);
+            
+            setTimeout(function(){ 
+                    
+                    $("#buttons").fadeIn(400);
+                    
+                    $("#times").fadeIn(400); 
+                
+                }, 2000);
+            
+            setTimeout(function(){ 
+                    
+                    $("#madeby").fadeIn(400); 
+                
+                }, 2500);
+            
+            var timeOutId = 0;
+            
+            var start = new Date().getTime();
+            
+            function getRandomColor() {
+                
+                var letters = '0123456789ABCDEF'.split('');
+                
+                var color = '#';
+                
+                for (var i = 0; i < 6; i++ ) {
+                    
+                    color += letters[Math.floor(Math.random() * 16)];
+                    
+                }
+                
+                return color;
+                
+            }
+            
+            function makeShapeAppear() {
+                
+                var top = Math.random() * 400;
+                
+                var left = Math.random() * 400;
+                
+                var width = (Math.random() * 200) + 100;
+                
+                if (Math.random() > 0.5) {
+                    
+                    document.getElementById("shape").style.borderRadius = "50%"
+                    
+                } else {
+                    
+                    document.getElementById("shape").style.borderRadius = "0";
+                    
+                }
+                
+                document.getElementById("shape").style.backgroundColor = getRandomColor();
+                
+                document.getElementById("shape").style.top = top + "px";
+                
+                document.getElementById("shape").style.left = left + "px";
+                
+                document.getElementById("shape").style.width = width + "px";
+                
+                document.getElementById("shape").style.height = width + "px";
+                
+                document.getElementById("shape").style.display = "block";
+                
+                start = new Date().getTime();
+                
+            }
+            
+            function appearAfterDelay() {
+                
+                timeOutId = setTimeout(makeShapeAppear, Math.random() * 3000);
+                
+            }
+            
+            function count() {
+                
+                document.getElementById("gamestarter").innerHTML = timetostart + " s";
+                
+                timetostart = timetostart - 1;
+                
+                if (timetostart == -1) {
+                    
+                    $("#gamestart").fadeOut(400, function() {
+                        
+                        $("#gameisrunnning").fadeIn(400, function() {
+                            
+                            appearAfterDelay();
+                            
+                        });
+                
+                    });
+                        
+                };
+                    
+            }
+            
+            var totalTime = 0;
+            
+            var totalGames = 0;
+            
+            var notRoundAverage = 0;
+            
+            var roundAverage = 0;
+            
+            var timeTaken = 0;
+            
+            var highscore = 0;
+            
+            localStorage.setItem("highscore", 999999);
+            
+            var timetostart = 3;
+            
+            var timer = 0;
+            
+            $("#start").click(function() {
+                
+                document.getElementById("start").disabled = true;
+                
+                document.getElementById("stop").disabled = false; 
+                
+                document.getElementById("reset").disabled = false;
+                
+                $("#start").css("background-color", "#dddddd");
+                
+                $("#stop").css("background-color", "#4285F4");
+                
+                $("#reset").css("background-color", "#4285F4");
+                
+                $('html, body').animate({
+                    
+                    scrollTop: $("#containertwo").offset().top},'slow');
+                
+                $("#gameisreseted").fadeOut(400);
+                
+                $("#gameispaused").fadeOut(400);
+                
+                $("#gamestart").fadeIn(400, function() {
+                    
+                    timer = setInterval(count, 1000);
+                            
+                    setTimeout(function() {clearInterval(timer);}, 4000);
+                        
+                });
+                
+                
+                document.getElementById("shape").onclick = function() {
+
+                    document.getElementById("shape").style.display = "none";
+
+                    var end = new Date().getTime();
+
+                    var timeTaken = (end - start) / 1000;
+
+                    totalTime += timeTaken;
+
+                    totalGames += 1;
+
+                    var notRoundAverage = (totalTime / totalGames);
+
+                    var roundAverage = notRoundAverage.toFixed(3);
+
+                    document.getElementById("timeTaken").innerHTML = timeTaken + " s";
+
+                    document.getElementById("average").innerHTML = roundAverage + " s";
+                    
+                    if (timeTaken < localStorage.getItem("highscore")) {
+                        
+                        localStorage.setItem("highscore", timeTaken);
+                        
+                        document.getElementById("best").innerHTML = localStorage.getItem("highscore") + " s";
+                        
+                    } else {
+                        
+                        document.getElementById("best").innerHTML = localStorage.getItem("highscore") + " s";
+                        
+                    }
+                    
+                    appearAfterDelay();
+
+                }
+                
+            });
+            
+            document.getElementById("stop").onclick = function() {
+                
+                document.getElementById("start").disabled = false;
+                
+                document.getElementById("stop").disabled = true; 
+                
+                document.getElementById("reset").disabled = false; 
+                
+                $("#start").css("background-color", "#4285F4");
+                
+                $("#stop").css("background-color", "#dddddd");
+                
+                $("#reset").css("background-color", "#4285F4");
+                
+                window.clearTimeout(timeOutId);
+                
+                window.clearTimeout(timer);
+
+                document.getElementById("shape").removeAttribute("style");
+                
+                timetostart = 3;
+                
+                $("#gamestart").fadeOut(400, function() {
+                    
+                    document.getElementById("gamestarter").innerHTML = "";
+                    
+                });
+                
+                $("#gameisreseted").fadeOut(400);
+                
+                $("#gameisrunnning").fadeOut(400);
+                    
+                setTimeout(function(){
+                    
+                    $("#gameispaused").fadeIn(400);
+                    
+                }, 400);
+                
+            }
+            
+            document.getElementById("reset").onclick = function() {
+                
+                document.getElementById("start").disabled = false;
+                
+                document.getElementById("stop").disabled = true; 
+                
+                document.getElementById("reset").disabled = true; 
+                
+                $("#start").css("background-color", "#4285F4");
+                
+                $("#stop").css("background-color", "#dddddd");
+                
+                $("#reset").css("background-color", "#dddddd");
+                
+                window.clearTimeout(timeOutId);
+                
+                window.clearTimeout(timer);
+                
+                document.getElementById("timeTaken").innerHTML = "&ensp;";
+                
+                document.getElementById("average").innerHTML = "&ensp;";
+                
+                document.getElementById("best").innerHTML = "&ensp;";
+                
+                document.getElementById("shape").removeAttribute("style");
+                
+                localStorage.setItem("highscore", 99999999);
+                
+                totalTime = 0;
+                
+                totalGames = 0;
+                
+                notRoundAverage = 0;
+                
+                roundAverage = 0;
+                
+                timeTaken = 0;
+                
+                timetostart = 3;
+                
+                $("#gameispaused").fadeOut(400);
+                
+                $("#gameisrunnning").fadeOut(400);
+                
+                $("#gamestart").fadeOut(400, function() {
+                    
+                    document.getElementById("gamestarter").innerHTML = "";
+                    
+                });
+                    
+                setTimeout(function(){ 
+                    
+                    $("#gameisreseted").fadeIn(400); 
+                
+                }, 400); 
+                
+                setTimeout(function(){
+                    
+                    $("#gameisreseted").fadeOut(400);
+                    
+                }, 2000);
+                
+            }
+         
+        </script>
+    
+    </body>
+
+</html>
